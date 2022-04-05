@@ -105,5 +105,38 @@ namespace MarsRovers.UnitTest
       rover.Position.Should().Be(new Point(1, 2));
     }
 
-  }
+
+
+    [Test]
+    public void RoverShouldMoveforwardFacingNorthbyOneYCordiante()
+    {
+        Rover rover = new Rover();
+        rover.Direction = "N";
+        rover.Position = new Point(1, 1);
+        rover.Move();
+        rover.Direction.Should().Be("N");
+        rover.Position.Should().Be(new Point(1, 2));
+    }
+
+    [Test]
+    public void RoverShouldMoveforwardFacingEastbyOneXCordiante()
+    {
+        Rover rover = new Rover();
+        rover.Direction = "E";
+        rover.Position = new Point(1, 1);
+        rover.Move();
+        rover.Direction.Should().Be("E");
+        rover.Position.Should().Be(new Point(2, 1));
+    }
+
+    [Test]
+    public void RoverShouldMoveforwardFacingWestAndInBottomLeftcorner()
+    {
+        Rover rover = new Rover();
+        rover.Direction = "W";
+        rover.Position = new Point(0, 0);
+        rover.Move();
+        rover.ErrorMessage.Should().Be("Rover falls out");
+    }
+    }
 }

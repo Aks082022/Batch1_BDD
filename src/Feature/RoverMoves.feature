@@ -3,7 +3,7 @@
     Rover should be successfully able to move
 
     Scenario: Rover Movement
-        Given Rover is in plateau at (<X>,<Y>) co-ordinates and facing facing <Direction>
+        Given Rover is in plateau at (<X>,<Y>) co-ordinates and facing a <Direction>
         When the rover moves
         Then the rover reaches new position (<M>,<N>) in the same <Direction>.
         Examples:
@@ -15,7 +15,7 @@
 
 
     Scenario: Rover movement out of boundary
-        Given Rover is in plateau at (<X>,<Y>) co-ordinates and facing facing <Direction>
+        Given Rover is in plateau at (<X>,<Y>) co-ordinates and facing a <Direction>
         When the rover moves
         Then the rover falls out of the plateau
         Examples:

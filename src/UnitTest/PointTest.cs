@@ -13,6 +13,5 @@ namespace MarsRovers.UnitTest
             Point p2 = new Point(1, 2);
             Assert.AreEqual(p1, p2);
         }
-
     }
 }

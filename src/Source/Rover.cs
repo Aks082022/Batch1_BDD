@@ -2,60 +2,87 @@
 
 namespace MarsRovers
 {
-  class Rover
-  {
-    public string Direction { get; internal set; }
-    public Point Position { get; internal set; }
-
-    internal void Turn(string turnDirection)
+    class Rover
     {
-      if (turnDirection == "L")
-      {
+        public string Direction { get; set; }
 
-        if (Direction == "N")
+        public Point Position { get;  set; }
+
+        public string ErrorMessage { get; set; }
+
+        internal void Turn(string turnDirection)
         {
-          Direction = "W";
+            if (turnDirection == "L")
+            {
+
+                if (Direction == "N")
+                {
+                    Direction = "W";
+                }
+
+                else if (Direction == "E")
+                {
+                    Direction = "N";
+                }
+
+                else if (Direction == "W")
+                {
+                    Direction = "S";
+                }
+
+                else if (Direction == "S")
+                {
+                    Direction = "E";
+                }
+            }
+
+            if (turnDirection == "R")
+            {
+
+                if (Direction == "N")
+                {
+                    Direction = "E";
+                }
+
+                else if (Direction == "E")
+                {
+                    Direction = "S";
+                }
+
+                else if (Direction == "W")
+                {
+                    Direction = "N";
+                }
+
+                else if (Direction == "S")
+                {
+                    Direction = "W";
+                }
+            }
         }
 
-        else if (Direction == "E")
+        internal void Move()
         {
-          Direction = "N";
+            if (Position.X == 0 && Position.Y == 0 && (Direction == "W" || Direction == "S"))
+            {
+                ErrorMessage = "Rover falls out";
+            }
+            else if (Direction == "S")
+            {
+                Position.Y = Position.Y - 1;
+            }
+            else if (Direction == "N")
+            {
+                Position.Y = Position.Y + 1;
+            }
+            else if (Direction == "W")
+            {
+                Position.X = Position.X - 1;
+            }
+            else if (Direction == "E")
+            {
+                Position.X = Position.X + 1;
+            }
         }
-
-        else if (Direction == "W")
-        {
-          Direction = "S";
-        }
-
-        else if (Direction == "S")
-        {
-          Direction = "E";
-        }
-      }
-
-      if (turnDirection == "R")
-      {
-
-        if (Direction == "N")
-        {
-          Direction = "E";
-        }
-
-        else if (Direction == "E")
-        {
-          Direction = "S";
-        }
-
-        else if (Direction == "W")
-        {
-          Direction = "N";
-        }
-
-        else if (Direction == "S")
-        {
-          Direction = "W";
-        }
-      }
     }
-  }
 }
